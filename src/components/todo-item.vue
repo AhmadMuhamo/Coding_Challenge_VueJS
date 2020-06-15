@@ -9,6 +9,7 @@
       Complete
     </v-btn>
     <v-btn 
+      @click="deleteTodo" 
       color="error">
       Delete
     </v-btn>
@@ -25,7 +26,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['removeTodo'])
+    ...mapActions(['removeTodo']),
+    deleteTodo() {
+      this.removeTodo(this.todo)
+    }
   }
 }
 </script>

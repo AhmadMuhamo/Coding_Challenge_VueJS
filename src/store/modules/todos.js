@@ -12,7 +12,7 @@ export default {
       state.todos.push(todo)
     },
     REMOVE_TODO(state, todo) {
-      const newTodos = state.todos.splice(state.todos.indexOf(todo), 1)
+      const newTodos = state.todos.filter( oldTodo => oldTodo.id != todo.id)
       state.todos = newTodos
     },
     CHANGE_TODO_STATE(state, todoID) {
