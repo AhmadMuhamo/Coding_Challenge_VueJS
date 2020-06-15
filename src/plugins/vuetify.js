@@ -1,4 +1,5 @@
 import Vue from 'vue'
+
 import {
   Vuetify,
   VApp,
@@ -6,10 +7,10 @@ import {
   VFooter,
   VList,
   VBtn,
-  VIcon,
   VGrid,
   VToolbar,
   VCard,
+  VIcon,
   VTextField,
   transitions
 } from 'vuetify'

@@ -1,11 +1,21 @@
 <template lang="html">
-  <v-text-field
-    label="Todo"
-    placeholder="What do you have to do?"
-    solo
-    v-model="title"
-    @change="newTodo"
-  />
+  <div class="form-group">
+    <v-text-field
+      label="Todo"
+      placeholder="What do you have to do?"
+      solo
+      v-model="title"
+    />
+    <v-btn
+      class="add-btn"
+      @click="newTodo"
+      large
+      :disabled="!this.title"
+      color="primary">
+      Add
+    </v-btn>
+  </div>
+  
 </template>
 
 <script>
@@ -26,9 +36,20 @@ export default {
         completed: false,
       }
       this.addTodo(todo)
+      this.title= ''
     },
   },
 }
 </script>
 
-<style lang="css"></style>
+<style lang="css">
+.form-group {
+  display: flex;
+}
+.v-text-field {
+  width: 90%;
+}
+.add-btn {
+  width: 10%;
+}
+</style>
