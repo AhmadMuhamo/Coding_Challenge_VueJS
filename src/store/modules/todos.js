@@ -11,8 +11,8 @@ export default {
     ADD_TODO(state, todo) {
       state.todos.push(todo)
     },
-    REMOVE_TODO(state, todo) {
-      const newTodos = state.todos.filter( oldTodo => oldTodo.id != todo.id)
+    REMOVE_TODO(state, todoID) {
+      const newTodos = state.todos.filter( todo => todo.id != todoID)
       state.todos = newTodos
     },
     CHANGE_TODO_STATE(state, todoID) {

@@ -9,7 +9,7 @@
       Complete
     </v-btn>
     <v-btn 
-      @click="deleteTodo" 
+      @click="removeTodo(todo.id)" 
       color="error">
       Delete
     </v-btn>
