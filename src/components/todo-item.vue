@@ -18,7 +18,6 @@
         Delete
       </v-btn>
     </div>
-   
   </v-card>
 </template>
 

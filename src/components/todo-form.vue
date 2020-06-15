@@ -11,11 +11,11 @@
       @click="newTodo"
       large
       :disabled="!this.title"
-      color="primary">
+      color="primary"
+    >
       Add
     </v-btn>
   </div>
-  
 </template>
 
 <script>
@@ -36,7 +36,7 @@ export default {
         completed: false,
       }
       this.addTodo(todo)
-      this.title= ''
+      this.title = ''
     },
   },
 }
