@@ -1,6 +1,6 @@
 export default {
   state: {
-    todos: [],
+    todos: JSON.parse(localStorage.getItem('todos')) || [],
   },
   getters: {
     todos(state) {
@@ -10,10 +10,12 @@ export default {
   mutations: {
     ADD_TODO(state, todo) {
       state.todos.push(todo)
+      localStorage.setItem('todos', JSON.stringify(state.todos))
     },
     REMOVE_TODO(state, todoID) {
       const newTodos = state.todos.filter( todo => todo.id != todoID)
       state.todos = newTodos
+      localStorage.setItem('todos', JSON.stringify(newTodos))
     },
     CHANGE_TODO_STATUS(state, todoID) {
       const newTodos = state.todos.map( todo => {
@@ -23,6 +25,7 @@ export default {
         return todo
       })
       state.todos = newTodos
+      localStorage.setItem('todos', JSON.stringify(newTodos))
     },
   },
   actions: {
