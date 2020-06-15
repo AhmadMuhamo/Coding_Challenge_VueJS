@@ -5,8 +5,10 @@
         <h3 class="headline mb-0">{{ todo.title }}</h3>
       </div>
     </v-card-title>
-    <v-btn @click="changeTodoStatus(todo.id)">
-      {{ todo.completed ? 'Completed' : 'Complete' }}
+    <v-btn 
+      @click="changeTodoStatus(todo.id)" 
+      :color="todo.completed ? 'success' : 'primary'">
+      {{ todo.completed ? 'Incomplete' : 'Complete' }}
     </v-btn>
     <v-btn 
       @click="removeTodo(todo.id)" 

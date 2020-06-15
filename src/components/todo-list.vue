@@ -1,7 +1,16 @@
 <template lang="html">
-  <div v-if="todos.length">
+  <div>
     <TodoItem 
-      v-for="todo in todos" 
+      v-for="todo in uncompletedTodos" 
+      :key="todo.id"
+      :todo="todo" 
+      class="mb-3" />
+    <h2 
+      v-if="!todos.length">Add Some Todos!</h2>
+    <h3 
+      v-if="completedTodos.length">Completed Todos</h3>  
+    <TodoItem 
+      v-for="todo in completedTodos" 
       :key="todo.id"
       :todo="todo" 
       class="mb-3" />
@@ -17,10 +26,23 @@ export default {
     TodoItem,
   },
   computed: {
-    ...mapGetters(['todos'])
+    ...mapGetters(['todos']),
+    uncompletedTodos() {
+      return this.todos.filter(todo=>!todo.completed)
+    },
+    completedTodos() {
+      return this.todos.filter(todo=>todo.completed)
+    }
   }
 }
 </script>
 
-<style lang="css">
+<style lang="css" scoped>
+  h2,h3 {
+    text-align: center;
+  }
+  h3 {
+    color: green;
+    margin: 1rem auto;
+  }
 </style>
