@@ -7,13 +7,18 @@
       class="mb-3"
     />
     <h2 v-if="!todos.length">Add Some Todos!</h2>
-    <h3 v-if="completedTodos.length">Completed Todos</h3>
-    <TodoItem
-      v-for="todo in completedTodos"
-      :key="todo.id"
-      :todo="todo"
-      class="mb-3"
-    />
+    <h3 
+      v-if="completedTodos.length" 
+      @click="viewCompleted = !viewCompleted">{{ viewCompleted ? 'Hide' : 'Show' }} Completed Todos</h3>
+    <div :class="{hidden: !viewCompleted}">
+      <TodoItem
+        v-for="todo in completedTodos"
+        :key="todo.id"
+        :todo="todo"
+        class="mb-3"
+      />
+    </div>
+    
   </div>
 </template>
 
@@ -24,6 +29,11 @@ import { mapGetters } from 'vuex'
 export default {
   components: {
     TodoItem,
+  },
+  data() {
+    return {
+      viewCompleted: false
+    }
   },
   computed: {
     ...mapGetters(['todos']),
@@ -44,5 +54,9 @@ h2,h3 {
 h3 {
   color: green;
   margin: 1rem auto;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
 }
 </style>
